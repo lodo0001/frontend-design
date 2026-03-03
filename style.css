@@ -6,6 +6,60 @@
   }
 }
 
+/* Opgave 1, kort uden billed men med h3*/
+.card:not(:has(img)) h3 {
+  font-size: 1.6rem;
+}
+
+/* Opgave 2, kort kun tekst */
+.card:not(:has(img, h3)) p {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+/* Opgave 3, de 2 sidste kort */
+
+.card:has(img) {
+  padding: 0;
+}
+
+.card:has(img) img {
+  width: 100%;
+  display: block;
+}
+
+.card:has(img) .content {
+  padding: 1rem;
+}
+
+/* opgave 1 med nesting */
+
+.card {
+  &:not(:has(img)) {
+    /* outline: 4px solid red; */
+  }
+  &:not(:has(h3, img)) p {
+    outline: 4px solid red;
+  }
+}
+
+.card {
+  &:has(img) {
+    outline: 4px solid red;
+    padding: 0;
+    .content {
+      padding: 1rem;
+    }
+  }
+  &:not(:has(img)) {
+    /* outline: 4px solid red; */
+  }
+  &:not(:has(h3, img)) {
+    p {
+    }
+  }
+}
+
 @layer reset, cards;
 
 @layer cards {
@@ -60,30 +114,4 @@
     place-content: center;
     block-size: 100svh;
   }
-}
-
-/* Opgave 1 */
-.card:not(:has(img)) h3 {
-  font-size: 1.6rem;
-}
-
-/* Opgave 2 */
-.card:not(:has(img, h3)) p {
-  font-size: 1.25rem;
-  line-height: 1.4;
-}
-
-/* Opgave 3 */
-
-.card:has(img) {
-  padding: 0;
-}
-
-.card:has(img) img {
-  width: 100%;
-  display: block;
-}
-
-.card:has(img) .content {
-  padding: 1rem;
 }
