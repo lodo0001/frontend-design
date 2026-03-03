@@ -1,12 +1,74 @@
 :root {
-    --color-heading: #0B0D19;
-    --color-body: #677386;
-    --color-bg-button: #3D7BFA;
-    --color-text-button: #FFF;
+  --color-heading: #0b0d19;
+  --color-body: #677386;
+  --color-bg-button: #3d7bfa;
+  --color-text-button: #fff;
 
-    /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
-    --hide-overlay: 0;
+  /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
+  --hide-overlay: 1;
 }
 
-
 /* Begynd her... */
+
+section {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row-reverse;
+  > * {
+    flex: 200px;
+  }
+}
+
+.text {
+  h1 {
+    font-size: 40px;
+  }
+  p {
+    color: #677386;
+  }
+
+  button {
+    background-color: rgb(97, 97, 223);
+    color: #fff;
+  }
+}
+
+@media (width>600px) {
+  .img {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 1em;
+    row-gap: 1em;
+
+    :first-child {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+
+    :nth-child(2) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+    }
+    :nth-child(3) {
+      grid-column: 2/3;
+      grid-row: 2/4;
+    }
+    :nth-child(4) {
+      grid-column: 3/4;
+      grid-row: 2/3;
+    }
+    :nth-child(5) {
+      grid-column: 1/2;
+      grid-row: 3/4;
+    }
+    :nth-child(6) {
+      grid-column: 3/4;
+      grid-row: 3/4;
+    }
+
+    :last-child {
+      grid-column: 2/3;
+      grid-row: 4/5;
+    }
+  }
+}
