@@ -10,7 +10,7 @@ article {
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border-radius: 1rem;
   border: 1px solid #dadceb;
-  --flow-space: 0.5rlh;
+  --flow-space: 1rlh;
 
   > * + * {
     margin-block-start: var(--flow-space, 1em);
@@ -19,7 +19,6 @@ article {
 
 .picture {
   display: grid;
-  padding: 0.5rem;
 
   > * {
     grid-area: 1 / 1;
@@ -29,7 +28,14 @@ article {
     place-self: start;
     margin: 1rem;
     z-index: 1;
-    color: #fff;
+    color: rgba(0, 0, 0, 0.4);
+
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
   }
 
   .image-count {
@@ -38,14 +44,14 @@ article {
     letter-spacing: 2px;
     line-height: 1;
     place-self: end;
-    background: #bdc4ce;
+    background: #9b9fa6;
     color: #fff;
     margin: 1rem;
   }
 
   img {
     border: 1px solid #dadceb;
-    border-radius: 0.5rem;
+    border-radius: 1rem 1rem 0 0;
   }
 }
 
@@ -56,25 +62,30 @@ article {
 }
 
 .title {
-  font-family: "Abril Fatface", sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 400;
   font-size: 2rem;
-  color: #3c55cc;
+  color: #000000;
 }
 
 .location {
   color: #c8c9cb;
-  text-transform: uppercase;
-  font-size: 0.95em;
+  font-size: 0.92em;
+  line-height: 1.2rlh;
 }
 
 .description p {
-  text-align: center;
+  line-height: 1.1rlh;
+  color: #626262;
 }
 
 .amenities-details {
   display: flex;
   gap: 1rem;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
 
   li {
     flex: 1;
