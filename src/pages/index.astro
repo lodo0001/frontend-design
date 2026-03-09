@@ -37,6 +37,34 @@ import { cardContent } from "../data/card-content.js";
   main {
     padding-block: 4rem; /* Kun af æstetiske årsager */
   }
+
+  h2 {
+    font-weight: bolder;
+  }
+
   section {
+    display: grid;
+    grid-template-columns:
+      [full-start] 1fr
+      [content-start] minmax(0, 70ch)
+      [content-end] 1fr
+      [full-end];
+    row-gap: 2.5rem;
+
+    > * {
+      grid-column: content;
+    }
+
+    .full {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: inherit;
+      > * {
+        grid-column: content;
+      }
+    }
+    ul {
+      padding-inline: max(1rem, 50% - var(--content-width) / 2);
+    }
   }
 </style>
