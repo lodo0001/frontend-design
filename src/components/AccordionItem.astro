@@ -11,15 +11,17 @@ const { id, question, answer, linkBlock } = props;
       <PlusIcon />
     </span>
   </summary>
-  <div class="answer">
-    {answer.map((a) => <p set:html={a} />)}
-    {
-      linkBlock && (
-        <a class="link-block" href={linkBlock.url} target="_blank">
-          {linkBlock.label}
-        </a>
-      )
-    }
+  <div class="content">
+    <div class="answer">
+      {answer.map((a) => <p set:html={a} />)}
+      {
+        linkBlock && (
+          <a class="link-block" href={linkBlock.url} target="_blank">
+            {linkBlock.label}
+          </a>
+        )
+      }
+    </div>
   </div>
 </details>
 
@@ -28,12 +30,31 @@ const { id, question, answer, linkBlock } = props;
     color: hsl(190 30% 12%);
     border-bottom: 1px solid #dadada;
 
+    --r: rotate(0deg);
+
+    ::details-content {
+      height: 0;
+      overflow: clip;
+      transition: 0.3s allow-discrete;
+    }
+
+    &[open] {
+      --r: rotate(180deg);
+    }
+
+    &[open] svg path.vertical {
+      transform: scaleY(0);
+    }
+
+    &[open]::details-content {
+      height: auto;
+    }
+
     summary {
       font-weight: 700;
       color: #181818;
       text-wrap: revert;
       user-select: none;
-      cursor: pointer;
 
       &::marker,
       &::-webkit-details-marker {
@@ -50,11 +71,21 @@ const { id, question, answer, linkBlock } = props;
         display: flex;
         gap: 1rem;
         justify-content: space-between;
+        align-items: center;
 
         svg {
           inline-size: auto;
           height: 1lh;
           flex-shrink: 0;
+
+          transform: var(--r);
+          transition: transform 0.3s ease;
+
+          path.vertical {
+            transform-origin: center;
+            transform: scaleY(1);
+            transition: transform 0.3s ease;
+          }
         }
       }
     }
@@ -73,6 +104,16 @@ const { id, question, answer, linkBlock } = props;
       .link-block {
         display: block;
       }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    details ::details-content {
+      transition: none;
+    }
+
+    details summary span svg {
+      transition: none;
     }
   }
 </style>
